@@ -1,0 +1,153 @@
+:root {
+  --purple: hsl(259, 100%, 65%); /* main color */
+  --light-red: hsl(0, 100%, 67%); /* error */
+  --white: hsl(0, 0%, 100%); /* white */
+  --light-grey: hsl(0, 0%, 86%); /* body */
+  --smokey-grey: hsl(0, 1%, 44%); /* borders */
+  --off-black: hsl(0, 0%, 8%); /* black */
+  --tra-2: 0.2s;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-grey);
+}
+.container {
+  width: 750px;
+  padding: 35px;
+  border-radius: 15px;
+  border-bottom-right-radius: 85px;
+  box-shadow: 4px 8px 12px rgb(0, 0, 0, 0.3);
+  background-color: var(--white);
+}
+.container .age-calc-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 45px;
+  padding-bottom: 35px;
+  border-bottom: 2px solid var(--light-grey);
+}
+.age-calc-form > div {
+  display: flex;
+  flex-direction: column;
+}
+.age-calc-form > div label {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--smokey-grey);
+}
+.age-calc-form > div input {
+  width: 130px;
+  height: 48px;
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 8px;
+  border: 1px solid var(--light-grey);
+  outline: none;
+  color: var(--off-black);
+  caret-color: var(--purple);
+  transition: var(--tra-2);
+}
+.age-calc-form > div input::-webkit-outer-spin-button,
+.age-calc-form > div input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.age-calc-form > div input:focus {
+  border-color: var(--purple);
+}
+.age-calc-form > div span {
+  font-size: 12px;
+  color: var(--light-red);
+  visibility: hidden;
+}
+.age-calc-form button[type="submit"] {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  right: 0;
+  bottom: -30px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: var(--tra-2);
+  background: var(--purple);
+}
+.age-calc-form button[type="submit"]:hover {
+  background-color: var(--off-black);
+}
+.age-calc-form button[type="submit"] img {
+  width: 34px;
+  height: 34px;
+}
+.container .result-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.container .result-container > div {
+  font-size: 64px;
+  font-weight: 900;
+  color: var(--off-black);
+}
+.container .result-container > div span {
+  font-size: 50px;
+  color: var(--purple);
+}
+
+/* Interact styling */
+.age-calc-form > div.invalid input {
+  border-color: var(--light-red);
+}
+.age-calc-form > div.invalid label {
+  color: var(--light-red);
+}
+.age-calc-form > div.invalid span {
+  visibility: visible;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .container {
+    width: 95%;
+  }
+  .container .age-calc-form {
+    flex-wrap: wrap;
+  }
+  .age-calc-form button[type="submit"] {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .container .result-container > div {
+    font-size: 54px;
+  }
+  .container .result-container > div span {
+    font-size: 40px;
+  }
+}
+@media (max-width: 400px) {
+  body {
+    margin-block: 10px;
+  }
+  .container .result-container > div {
+    font-size: 38px;
+  }
+  .container .result-container > div span {
+    font-size: 30px;
+  }
+}
