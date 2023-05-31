@@ -54,7 +54,7 @@ function calcAge() {
     daysDiff += daysInLastMonth;
   }
 
-  // show the result
+  // show results
   let allInputDivs = document.querySelectorAll(".age-calc-form > div");
   let hasInvalidClass = false;
   allInputDivs.forEach((el) => {
@@ -64,12 +64,23 @@ function calcAge() {
     }
   });
   if (!hasInvalidClass) {
-    yearsNum.textContent = yearsDiff;
-    monthsNum.textContent = monthsDiff;
-    daysNum.textContent = daysDiff;
+    showResult(yearsNum, yearsDiff);
+    showResult(monthsNum, monthsDiff);
+    showResult(daysNum, daysDiff);
   } else {
     return false;
   }
+}
+
+function showResult(element, diff) {
+  let i = 0;
+  let timer = setInterval(() => {
+    element.textContent = i;
+    i++;
+    if (i > diff) {
+      clearInterval(timer);
+    }
+  }, 500 / diff);
 }
 
 function validateInput(inputElement, errorMsgElement, validationConditions) {
